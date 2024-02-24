@@ -1,10 +1,40 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    @apply w-full h-full;
+  }
 }
 
-input[type="number"] {
-  width: 60px;
-  margin-right: 20px;
+@layer components {
+  .app-layout {
+    @apply grid grid-cols-[300px_minmax(600px,1fr)_300px] grid-rows-[minmax(60px,auto)_minmax(600px,1fr)] h-full w-full;
+
+    grid-template-areas:
+      "header header header"
+      "layers canvas layer-settings";
+  }
+
+  .header {
+    grid-area: header;
+  }
+
+  .layers {
+    grid-area: layers;
+  }
+
+  .editor-wrapper {
+    @apply flex items-center justify-center bg-zinc-200;
+    grid-area: canvas;
+  }
+
+  .konva-wrapper {
+    @apply bg-white w-[600px] h-[600px];
+  }
+
+  .layer-settings {
+    grid-area: layer-settings;
+  }
 }
